@@ -22221,6 +22221,125 @@
 					"response": []
 				},
 				{
+					"name": "001.1 บันทึกแผนบำรุงรักษา",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"cd208c4b-e726-4378-ad3a-519c13008228\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"13fb2366-0a1a-44b6-b96a-b930f17bf839\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plan?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"plan"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "001.2 แก้ไขแผนบำรุงรักษา",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"cd208c4b-e726-4378-ad3a-519c13008228\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"13fb2366-0a1a-44b6-b96a-b930f17bf839\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plan/{{planId}}?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"plan",
+								"{{planId}}"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "001.3 ยกเลิกแผนบำรุงรักษา(ยังไม่เสร็จ)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"startDate\":\"2025-07-01\",//* วันเริ่มต้น\n            \"remark\":\"2025-08-30\",//* หมายเหตุ\n            \"deleteAll\":true\n            \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plan/{{planId}}?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"plan",
+								"{{planId}}"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "001.6 รายละเอียดแผนบำรุงรักษา",
 					"request": {
 						"method": "GET",
@@ -22363,28 +22482,6 @@
 						".well-known",
 						"health"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
 				}
 			},
 			"response": []
