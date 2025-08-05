@@ -22227,7 +22227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"cd208c4b-e726-4378-ad3a-519c13008228\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"13fb2366-0a1a-44b6-b96a-b930f17bf839\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"b0e34619-40df-434e-b164-70d58269c66b\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22266,7 +22266,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"cd208c4b-e726-4378-ad3a-519c13008228\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"13fb2366-0a1a-44b6-b96a-b930f17bf839\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"b0e34619-40df-434e-b164-70d58269c66b\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\"]\n                }\n            ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
