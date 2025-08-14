@@ -22227,7 +22227,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"b0e34619-40df-434e-b164-70d58269c66b\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\"]\n                }\n            ]\n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-09-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-12-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"fe777415-ddd0-4c2d-9ed2-7c215c6da9d8\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\",\"b993e058-dd3b-4faf-a199-8fa20138a684\"]\n                }\n            ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22266,7 +22266,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-07-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-08-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"b0e34619-40df-434e-b164-70d58269c66b\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\"]\n                }\n            ]\n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            //\"planDateStart\":\"2025-09-01\",//* วันเริ่มต้น\n            //\"planDateEnd\":\"2025-12-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            //\"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"fe777415-ddd0-4c2d-9ed2-7c215c6da9d8\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\",\"b993e058-dd3b-4faf-a199-8fa20138a684\"]\n                }\n            ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22300,13 +22300,13 @@
 					"response": []
 				},
 				{
-					"name": "001.3 ยกเลิกแผนบำรุงรักษา(ยังไม่เสร็จ)",
+					"name": "001.3 ยกเลิกแผนบำรุงรักษา",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"startDate\":\"2025-07-01\",//* วันเริ่มต้น\n            \"remark\":\"2025-08-30\",//* หมายเหตุ\n            \"deleteAll\":true\n            \n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            // \"startDate\":\"2025-11-01\",//* วันเริ่มต้น\n            \"remark\":\"test remark\",//* หมายเหตุ\n            \"deleteAll\":true\n            \n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22417,6 +22417,47 @@
 								"v1",
 								"engineeringmaintenacesupport",
 								"plansByMonth"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "002.2 ย้ายแผนบำรุงรักษา(ย้าย task)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"toDate\":\"2025-12-05\",//* วันเริ่มต้น\n            \"remark\":\"test remark\"//* หมายเหตุ\n            \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/task/{{taskId}}/move?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"task",
+								"{{taskId}}",
+								"move"
 							],
 							"query": [
 								{
