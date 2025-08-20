@@ -22221,6 +22221,73 @@
 					"response": []
 				},
 				{
+					"name": "001.7 รายการรหัสงาน",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/master/jobs?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"master",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "001.8 รายการเครื่องจักร",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/master/job/machines?language=th&projectCode=SPY&jobCodeId=2995ba4f-125f-4b29-8aeb-7dab9bafebfe",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"master",
+								"job",
+								"machines"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								},
+								{
+									"key": "jobCodeId",
+									"value": "2995ba4f-125f-4b29-8aeb-7dab9bafebfe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "001.1 บันทึกแผนบำรุงรักษา",
 					"request": {
 						"method": "POST",
