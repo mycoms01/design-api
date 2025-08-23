@@ -22196,7 +22196,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plans?language=th&projectCode=SPY",
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plans?language=th&projectCode=SPY&month=2025-09",
 							"host": [
 								"{{BaseUrl}}"
 							],
@@ -22214,6 +22214,10 @@
 								{
 									"key": "projectCode",
 									"value": "SPY"
+								},
+								{
+									"key": "month",
+									"value": "2025-09"
 								}
 							]
 						}
@@ -22294,7 +22298,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"planDateStart\":\"2025-09-01\",//* วันเริ่มต้น\n            \"planDateEnd\":\"2025-12-30\",//* วันสิ้นสุด\n            \"planWorkingDay\":1,//* จำนวนวันระยะเวลาดำเนินงาน\n            \"planProjectId\":\"aeec6916-827c-4bea-aaf8-6b969f029434\", // * รหัสโครงการ\n            \"jobs\":[\n                {\n                    \"jobCodeId\":\"fe777415-ddd0-4c2d-9ed2-7c215c6da9d8\",\n                    \"machines\":[\"edd69c9b-36f5-4c49-969a-ff0ff15e3f83\",\"590f7dba-51c5-438f-a94a-ad60fefc717e\",\"b993e058-dd3b-4faf-a199-8fa20138a684\"]\n                }\n            ]\n}",
+							"raw": "{\n    \"projectCode\": \"SPY\",\n    \"planDateStart\": \"2025-08-24\", //* วันเริ่มต้น\n    \"planDateEnd\": \"2025-08-30\", //* วันสิ้นสุด\n    \"planWorkingDay\": 1, //* จำนวนวันระยะเวลาดำเนินงาน\n    \"planProjectId\": \"05755c56-85b7-4139-9907-1b462a5237a8\", // * รหัสโครงการ\n    \"jobs\": [\n        {\n            \"jobCodeId\": \"13fb2366-0a1a-44b6-b96a-b930f17bf839\",\n            \"machines\": [\n                \"db6619ba-fbc1-4c4f-976e-41784274fc92\",\n                \"24ec50b9-a19b-481e-b21e-290c70e16afd\"\n            ]\n        },\n        {\n            \"jobCodeId\": \"234b10a0-ef1f-4ec1-8c2a-e7c371cc7003\",\n            \"machines\": [\n                \"24ec50b9-a19b-481e-b21e-290c70e16afd\",\n                \"ff3b63b3-ae96-41b2-9698-8657f9761d47\",\n                \"42e654be-8387-4e78-90a7-ecae083516e4\",\n                \"db6619ba-fbc1-4c4f-976e-41784274fc92\"\n            ]\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -22443,7 +22447,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plan/{{planId}}/tasksList?language=th&projectCode=SPY",
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plan/{{planId}}/tasksList?language=th&projectCode=SPY&date=2025-09-08",
 							"host": [
 								"{{BaseUrl}}"
 							],
@@ -22463,6 +22467,10 @@
 								{
 									"key": "projectCode",
 									"value": "SPY"
+								},
+								{
+									"key": "date",
+									"value": "2025-09-08"
 								}
 							]
 						}
@@ -22475,7 +22483,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plansByMonth?language=th&projectCode=SPY",
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/plansByMonth?language=th&projectCode=SPY&month=2025-09",
 							"host": [
 								"{{BaseUrl}}"
 							],
@@ -22493,6 +22501,10 @@
 								{
 									"key": "projectCode",
 									"value": "SPY"
+								},
+								{
+									"key": "month",
+									"value": "2025-09"
 								}
 							]
 						}
@@ -22506,7 +22518,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"toDate\":\"2025-12-05\",//* วันเริ่มต้น\n            \"remark\":\"test remark\"//* หมายเหตุ\n            \n}",
+							"raw": "{\n            \"projectCode\":\"SPY\",\n            \"toDate\":\"2025-09-08\",//* วันเริ่มต้น\n            \"remark\":\"test remark\"//* หมายเหตุ\n            \n}",
 							"options": {
 								"raw": {
 									"language": "json"
