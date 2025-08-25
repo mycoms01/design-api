@@ -1,0 +1,278 @@
+Table tb_ms_lookups {
+  id uuid [pk]
+  lookup_type varchar(100)
+  lookup_code varchar(100)
+  lookup_description_local varchar(2000)
+  lookup_description_en varchar(2000)
+  is_active bool
+}
+
+Table tb_ms_projects {
+  id uuid [pk]
+  project_code varchar(12)
+  project_fullname_local varchar(150) 
+  project_fullname_en varchar(150)
+}
+
+Table tb_ms_job_groups {
+  id uuid [pk]
+  job_group_description_local varchar(100)
+  job_group_description_en varchar(100)
+  is_active bool
+}
+
+Table tb_ms_job_codes {
+  id uuid [pk]
+  job_code varchar(10)
+  job_code_description_local varchar(100)
+  job_code_description_en varchar(100)
+  job_group_id uuid [ref: > tb_ms_job_groups.id]
+  form_type int2
+  interval int2
+  sequence int2
+}
+
+Table tb_ms_job_code_config {
+  id uuid [pk]
+  project_id uuid [ref: > tb_ms_projects.id]
+  job_code_id uuid [ref: > tb_ms_job_codes.id]
+}
+
+Table tb_ms_departments {
+  id uuid [pk]
+  department_name_local varchar(100)
+  department_name_en varchar(100)
+}
+
+Table tb_ms_task_types {
+  id uuid [pk]
+  task_type_name_local varchar(100)
+  task_type_name_en varchar(100)
+}
+
+Table tb_ms_machines {
+  id uuid [pk]
+  machine_code varchar(100)
+  machine_name_local varchar(100)
+  machine_name_en varchar(100)
+  sub_system_id uuid [ref: > tb_ms_sub_systems.id]
+  location_id uuid
+  project_id uuid [ref: > tb_ms_projects.id]
+}
+
+Table tb_ms_project_checksheet_template_headers {
+  id uuid [pk]
+  project_id uuid
+  template_name varchar(200)
+}
+
+Table tb_ms_project_checksheet_template_details {
+  id uuid [pk]
+  project_checksheet_template_header_id uuid [ref: > tb_ms_project_checksheet_template_headers.id]
+  project_checksheet_item_id uuid [ref: > tb_ms_project_checksheet_items.id]
+  parent_id uuid [ref: > tb_ms_project_checksheet_template_details.id]
+}
+
+Table tb_ms_project_checksheet_items {
+  id uuid [pk]
+  item_description_local varchar(100)
+  item_description_en varchar(100)
+  item_type_code int
+  metric_unit int2
+  project_id uuid [ref: > tb_ms_projects.id]
+  reference_item_id uuid [ref: > tb_ms_checksheet_items.id]
+}
+
+Table tb_ms_checksheet_items {
+  id uuid [pk]
+  item_description_local varchar(1000)
+  item_description_en varchar(1000)
+  item_type_code int
+  metric_unit int2
+}
+
+Table tb_ms_machine_checksheets {
+  id uuid [pk]
+  machine_id uuid [ref: > tb_ms_machines.id]
+  job_code_config_id uuid [ref: > tb_ms_job_code_config.id]
+  project_checksheet_mapping_id uuid [ref: > tb_ms_project_checksheet_mappings.id]
+}
+
+Table tb_ms_project_checksheet_mappings {
+  id uuid [pk]
+  sub_system_id uuid [ref: > tb_ms_sub_systems.id]
+  job_code_config_id uuid [ref: > tb_ms_job_code_config.id]
+  project_checksheet_template_header_id uuid [ref: > tb_ms_project_checksheet_template_headers.id]
+}
+
+Table tb_ms_sub_systems {
+  id uuid [pk]
+  master_sub_system_name_local varchar(100)
+  master_sub_system_name_en varchar(100)
+  main_system_id uuid [ref: > tb_ms_main_systems.id]
+}
+
+Table tb_ms_main_systems {
+  id uuid [pk]
+  main_system_name_local varchar(100)
+  main_system_name_en varchar(100)
+  project_id uuid [ref: > tb_ms_projects.id]
+}
+
+Table tb_tx_tasks {
+  id uuid [pk]
+  project_id uuid 
+  task_no varchar(12)
+  task_type_id uuid [ref: > tb_ms_task_types.id]
+  task_date date
+  department_bos uuid [ref: > tb_ms_departments.id]
+}
+
+Table tb_tx_assignations {
+  id uuid [pk]
+  project_id uuid 
+  task_id uuid [ref: > tb_tx_tasks.id]
+  sequence int2
+  assignee_sequence int2
+  assignee_role_type int2
+  assignee uuid
+  assigned_date timestamp
+  assigned_by uuid
+  is_active bool
+  created_date timestamp
+  created_by varchar(100)
+  updated_date timestamp
+  updated_by varchar(100)
+}
+
+Table tb_ms_engineering_maintenace_support_plan_headers { //tb_bx_pm_plans
+    id uuid [pk]
+    project_id uuid [ref: > tb_ms_projects.id]
+    department_bos_id uuid [ref: > tb_ms_departments.id]
+    plan_date_start date
+    plan_date_end date
+    plan_working_day int
+    plan_status_code int
+    revision int
+    // remark varchar(500)
+    is_active bool
+    created_date timestamp
+    created_by varchar(100)
+    updated_date timestamp
+    updated_by varchar(100)
+
+    note: 'New Table'
+}
+
+Table tb_ms_engineering_maintenace_support_plan_details { // tb_bx_pm_plan_specs
+    id uuid [pk]
+    project_id uuid [ref: > tb_ms_projects.id]
+    plan_id string [ref: > tb_ms_engineering_maintenace_support_plan_headers.id]
+    job_code_id uuid [ref: > tb_ms_job_codes.id, note: "1M=1Month, 2M=2Months, etc."]
+    machine_id uuid [ref: > tb_ms_machines.id]
+    // is_active bool
+    created_date timestamp
+    created_by varchar(100)
+    updated_date timestamp
+    updated_by varchar(100)
+
+    note: 'New Table'
+}
+
+Table tb_tx_engineering_maintenace_support_results { // tb_bx_pm_plan_schedules, tb_bx_pm_plan_schedule_machines
+  id uuid [pk]
+  task_id uuid [ref: > tb_tx_tasks.id]
+  project_id uuid [ref: > tb_ms_projects.id]
+  plan_id uuid [ref: > tb_ms_engineering_maintenace_support_plan_headers.id]
+  job_code_id uuid [ref: > tb_ms_job_codes.id, note: "1M=1Month, 2M=2Months, etc."]
+  machine_id uuid [ref: > tb_ms_machines.id]
+  // department_bos_id uuid [ref: > tb_ms_departments.id]
+  plan_date date [note: "วันที่เดียวกันกับ tb_tx_tasks.task_date"]
+  sub_status_id uuid
+  //inspector_user_id uuid [note: "ผู้อนุมัติ"] // ย้าย ->task
+  //inspection_datetime datetime // ย้าย ->task
+  result_id int4//loolup
+  details varchar(500)
+  //root_cause varchar(500)
+  solution varchar(500)
+  comment varchar(500)
+  // expense numeric(18, 2)
+  // operated_by varchar(200)
+  sync_datetime timestamp
+  sync_by varchar(100)
+  created_date timestamp
+  created_by varchar(100)
+  updated_date timestamp
+  updated_by varchar(100)
+
+  note: 'New Table'
+}
+
+Table tb_tx_engineering_maintenace_support_checksheets { //tb_tx_pm_checksheets
+  id uuid [pk]
+  preventive_result_id uuid [ref: > tb_tx_engineering_maintenace_support_results.id]
+  checksheets_item_id uuid [ref: > tb_ms_project_checksheet_template_details.id]
+  item_description_th varchar(100)
+  item_description_en varchar(100)
+  item_type_id int2
+  value varchar(200)// input
+  metric_unit int2
+  standard_value_min varchar(200) // !=0 validate
+  standard_value_max varchar(200) // !=0 validate
+  parent_id uuid [ref: > tb_tx_engineering_maintenace_support_checksheets.id]
+  item_sequence int2
+  line_group int2
+  is_request bool// validate
+
+  regular_expression varchar(250)
+  new_line bool
+  check_result int2 // 1 ดี,2 แก้ไข
+  
+  is_active bool
+  created_date timestamp
+  created_by varchar(100)
+  updated_date timestamp
+  updated_by varchar(100)
+
+  note: 'New Table'
+}
+
+Table tb_tx_engineering_maintenace_support_checksheet_workorders {
+    id uuid [pk]
+    preventive_checksheet_id uuid [ref: > tb_tx_engineering_maintenace_support_checksheets.id]
+    workorder_id_reference uuid [ref: > tb_tx_tasks.id]
+    cycle_request int
+    remark varchar(200)  // input
+    broken_details varchar(200) // input
+    created_date timestamp
+    created_by varchar(100)
+    updated_date timestamp
+    updated_by varchar(100)
+
+    note: 'New Table'
+}
+
+Table tb_tx_engineering_maintenace_support_results_log {
+    id uuid [pk]
+    task_id uuid
+  project_id uuid [ref: > tb_ms_projects.id]
+  plan_id uuid [ref: > tb_ms_engineering_maintenace_support_plan_headers.id]
+  job_code_id uuid [ref: > tb_ms_job_codes.id, note: "1M=1Month, 2M=2Months, etc."]
+  machine_id uuid [ref: > tb_ms_machines.id]
+  plan_date date [note: "วันที่เดียวกันกับ tb_tx_tasks.task_date"]
+  sub_status_id uuid
+  result_id int4//loolup
+  details varchar(500)
+  solution varchar(500)
+  comment varchar(500)
+  sync_datetime timestamp
+  sync_by varchar(100)
+    action_by string
+    created_date timestamp
+    created_by varchar(100)
+    updated_date timestamp
+    updated_by varchar(100)
+
+    note: 'New Table'
+}
+
