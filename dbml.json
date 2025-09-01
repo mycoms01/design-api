@@ -196,6 +196,7 @@ Table tb_tx_engineering_maintenace_support_results { // tb_bx_pm_plan_schedules,
   //root_cause varchar(500)
   solution varchar(500)
   comment varchar(500)
+  check_datetime timestamp
   // expense numeric(18, 2)
   // operated_by varchar(200)
   sync_datetime timestamp
@@ -212,6 +213,7 @@ Table tb_tx_engineering_maintenace_support_checksheets { //tb_tx_pm_checksheets
   id uuid [pk]
   preventive_result_id uuid [ref: > tb_tx_engineering_maintenace_support_results.id]
   checksheets_item_id uuid [ref: > tb_ms_project_checksheet_template_details.id]
+  
   item_description_th varchar(100)
   item_description_en varchar(100)
   item_type_id int2
@@ -219,7 +221,7 @@ Table tb_tx_engineering_maintenace_support_checksheets { //tb_tx_pm_checksheets
   metric_unit int2
   standard_value_min varchar(200) // !=0 validate
   standard_value_max varchar(200) // !=0 validate
-  parent_id uuid [ref: > tb_tx_engineering_maintenace_support_checksheets.id]
+  parent_id uuid 
   item_sequence int2
   line_group int2
   is_request bool// validate
@@ -227,7 +229,6 @@ Table tb_tx_engineering_maintenace_support_checksheets { //tb_tx_pm_checksheets
   regular_expression varchar(250)
   new_line bool
   check_result int2 // 1 ดี,2 แก้ไข
-  
   is_active bool
   created_date timestamp
   created_by varchar(100)
