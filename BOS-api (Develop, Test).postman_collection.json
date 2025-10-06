@@ -3264,7 +3264,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"projectCode\": \"SPY\",\r\n    \"language\": \"th\",\r\n    \"taskId\": \"cee22bdf-782c-4971-b0d7-8cc90ba7528c\",\r\n    \"taskNo\": \"PM22050059\",\r\n    \"assignees\": [\r\n        \"99abf1d0-10ce-40d8-85fc-dfc769f5c9a5\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"projectCode\": \"QCS\",\r\n    \"language\": \"th\",\r\n    \"taskId\": \"669027a8-dbef-4e24-bd05-791729f7ded6\",\r\n    \"taskNo\": \"EMS251200001\",\r\n    \"assignees\": [\r\n       \"99abf1d0-10ce-40d8-85fc-dfc769f5c9a5\",\r\n       \"bc18e80c-50da-4c3d-a65d-5a25e651288b\"\r\n    //  \"50faa581-0880-45f2-81c6-6baada3d1f31\",\r\n    //  \"bc24072d-76b1-4143-95de-a9dfc38df44b\",\r\n    //  \"549f526a-332d-48a7-9a25-468831842351\"\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3294,7 +3294,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"projectCode\": \"QCS\",\n    \"language\": \"th\",\n    \"taskId\": \"df24c4dc-3014-4172-ace4-67876aae8002\",\n    \"taskNo\": \"EMS251200001\"\n}",
+							"raw": "{\n    \"projectCode\": \"QCS\",\n    \"language\": \"th\",\n     \"taskId\": \"669027a8-dbef-4e24-bd05-791729f7ded6\",\n    \"taskNo\": \"EMS251000001\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3324,7 +3324,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"language\": \"th\",\r\n    \"projectCode\": \"SPY\",\r\n    \"taskId\": \"e37bb9e9-7158-4926-923e-ced1ebc8eeb5\",\r\n    \"taskNo\": \"SR22070093\"\r\n}",
+							"raw": "{\r\n    \"language\": \"th\",\r\n    \"projectCode\": \"QCS\",\r\n    \"taskId\": \"f6bca373-9d81-4606-87e7-c5e1329804dc\",\r\n    \"taskNo\": \"EMS251200001\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -3384,7 +3384,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"language\": \"th\",\r\n    \"projectCode\": \"SPY\",\r\n    \"taskId\": \"e37bb9e9-7158-4926-923e-ced1ebc8eeb5\",\r\n    \"taskNo\": \"SR22070093\"\r\n}",
+							"raw": "{\r\n     \"projectCode\": \"QCS\",\r\n    \"language\": \"th\",\r\n     \"taskId\": \"f6bca373-9d81-4606-87e7-c5e1329804dc\",\r\n    \"taskNo\": \"EMS251200001\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -8953,7 +8953,7 @@
 							"response": []
 						},
 						{
-							"name": "Task Sync",
+							"name": "Task Detail",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -22555,7 +22555,47 @@
 					"response": []
 				},
 				{
-					"name": "003.2 tasks detail",
+					"name": "003.8 ยกเลิกใบงาน",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n            \"projectCode\":\"QCS\",\n            \"remark\":\"test delete remark\"//* หมายเหตุ\n            \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/task/{{taskId}}?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"task",
+								"{{taskId}}"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "003.2 Tasks Detail",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -22570,6 +22610,88 @@
 								"engineeringmaintenacesupport",
 								"task",
 								"{{taskId}}"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "003.3 Sync Tasks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ProjectCode\": \"QCS\",\n    \"machines\": [\n        {\n            \"machineId\": \"2f3f94d6-e13e-4e32-96dd-c8ad8c11c5ed\",\n            \"machineCode\": \"QCS-AC-AST-0001\",\n            \"resultCode\": 2,\n            \"solution\": \"แนวทางแก้ไข\",\n            \"comment\": \"ข้อเสนอแนะ\",\n            \"checkDateTime\": \"2025-09-01T14:00:00\",\n            \"checksheets\": [\n                {\n                    \"id\": \"02d7b375-15b8-41d4-8c0b-e3d353abd828\",\n                    \"checkSheetId\": \"eeacbf35-a6be-483f-a6c9-edf8ac20ed62\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 1,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คพัดลมระบายอากาศและทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"f2929a81-efc2-4fe3-acd8-61c2e8a2a9ea\",\n                    \"checkSheetId\": \"ff3de4a5-7e2c-426b-935f-d73595a5f8c6\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 2,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพโครงครอบและแท่นเครื่องพร้อมทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"28f0fa01-febe-409c-a59e-f81a9d448194\",\n                    \"checkSheetId\": \"77817de3-8c7e-4da7-8c69-4785e7b77eac\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 3,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็ค FIN COIL และทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"8b6864d7-b412-4533-b8e1-93f4fe9a9e55\",\n                    \"checkSheetId\": \"46cedfe4-82c4-4c45-b79c-4f3266fe374c\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 4,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพ MACNETIC และทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"be7060c2-8b9b-4642-b752-fc03723c8a8a\",\n                    \"checkSheetId\": \"6a212c85-29ec-4846-b535-68aeee8b2ac9\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 5,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพ COMPRESSER\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"99fe10c0-487e-449b-913e-c10f1bb4e966\",\n                    \"checkSheetId\": \"0b24a08e-ae2f-4167-9369-b57fea549dfd\",\n                    \"checkSheetIdParrent\": \"6ae9b12c-6cdd-407b-8cce-0559634450c7\",\n                    \"itemSequence\": 6,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพท่อท่างและหัวลูกศรเติมน้ำยา\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"b9f2145f-4b24-4f57-b069-c6e947950b32\",\n                    \"checkSheetId\": \"446fc0a6-78cd-4ff9-9d65-d95ffe0c6187\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 1,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คจุดต่อที่ตัวอุปกรณ์และที่ TERMINAL\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"9d81547c-d89b-4d48-bcfc-d84c61ef385f\",\n                    \"checkSheetId\": \"7f255c9e-e6e0-4035-9fd5-f755a5ddfaeb\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 2,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพ MACNETIC และทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"158b855e-0dcf-4624-bfb7-f954e8ab2101\",\n                    \"checkSheetId\": \"102d4fa3-7800-47c8-a4e2-0e98d346c309\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 3,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพ Fuse Control\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"81899588-9d9a-430b-9648-e4836008551b\",\n                    \"checkSheetId\": \"b42137d3-f8ec-4ffe-bba5-0d94555d1f59\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 4,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คการทำงานของ THERMOSTAT\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"066b378b-6cef-447d-ba02-18220035dea7\",\n                    \"checkSheetId\": \"5a73b419-d380-4d43-bfd9-d96f68fbdec4\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 5,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"แรงดัน\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [\n                        {\n                            \"id\": \"baef7bfc-6d82-4df5-a58f-c1ad636d1ca2\",\n                            \"checkSheetId\": \"4e9b9bb7-3fca-416d-9c99-6b03f60f0094\",\n                            \"checkSheetIdParrent\": \"5a73b419-d380-4d43-bfd9-d96f68fbdec4\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 1,\n                            \"checkSheetName\": \"R-S\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"โวล์ต\"\n                        },\n                        {\n                            \"id\": \"b8ef8f82-92c7-4b1b-ad3c-2c43dc0fe2f0\",\n                            \"checkSheetId\": \"b3bf2e29-a9c2-4773-a0c1-00614a4ada71\",\n                            \"checkSheetIdParrent\": \"5a73b419-d380-4d43-bfd9-d96f68fbdec4\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 2,\n                            \"checkSheetName\": \"S-T\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"โวล์ต\"\n                        },\n                        {\n                            \"id\": \"de4ca5d3-ab54-489a-97ac-42b6e0a248e0\",\n                            \"checkSheetId\": \"5764f3f4-2483-43a0-b288-2c3274563f41\",\n                            \"checkSheetIdParrent\": \"5a73b419-d380-4d43-bfd9-d96f68fbdec4\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 3,\n                            \"checkSheetName\": \"T-R\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"โวล์ต\"\n                        }\n                    ],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"43f35cbc-6341-4920-998e-f2c9055c618a\",\n                    \"checkSheetId\": \"67ff0d84-ec15-4ea0-9a16-d61f2a6d86b2\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 6,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็ค OVER LOAD\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [\n                        {\n                            \"id\": \"3b7b9ee4-ed37-41e2-b306-bfdf0db1da7c\",\n                            \"checkSheetId\": \"2857dae5-8b40-4b61-8526-04c8a61177fb\",\n                            \"checkSheetIdParrent\": \"67ff0d84-ec15-4ea0-9a16-d61f2a6d86b2\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 1,\n                            \"checkSheetName\": \"ค่าที่ Set\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"แอมป์\"\n                        }\n                    ],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"9c40c170-02e4-45d5-a127-7fde5e646628\",\n                    \"checkSheetId\": \"2fedc650-0e0c-44d5-845e-664546bb0129\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 7,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"วัดกระแส\",\n                    \"checkResultCode\": 2,\n                    \"lists\": [\n                        {\n                            \"id\": \"09bd38d0-5885-4996-9511-9990faf102eb\",\n                            \"checkSheetId\": \"11d2449d-7fe6-44b2-8136-ff9815764f0e\",\n                            \"checkSheetIdParrent\": \"2fedc650-0e0c-44d5-845e-664546bb0129\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 1,\n                            \"checkSheetName\": \"R\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"แอมป์\"\n                        },\n                        {\n                            \"id\": \"f3bfa94b-369a-49b1-b277-ad0730068075\",\n                            \"checkSheetId\": \"0f7e32e8-f427-4224-bf03-e03905e2d6d9\",\n                            \"checkSheetIdParrent\": \"2fedc650-0e0c-44d5-845e-664546bb0129\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 2,\n                            \"checkSheetName\": \"S\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"แอมป์\"\n                        },\n                        {\n                            \"id\": \"79544cf5-28e8-4e06-805e-c7de83fdbaf8\",\n                            \"checkSheetId\": \"c9eb0288-408c-44f1-af15-fec4a57fff2e\",\n                            \"checkSheetIdParrent\": \"2fedc650-0e0c-44d5-845e-664546bb0129\",\n                            \"checkSheetTypeCode\": 3,\n                            \"itemSequence\": 3,\n                            \"checkSheetName\": \"T\",\n                            \"value\": \"1\",\n                            \"standardValueMin\": \"0\",\n                            \"standardValueMax\": \"0\",\n                            \"isRequest\": true,\n                            \"unit\": \"แอมป์\"\n                        }\n                    ],\n                    \"workOrder\": {\n                        \"workOrderNo\": null,\n                        \"cycleRequest\": \"0\",\n                        \"brokenDetails\": \"brokenDetails\",\n                        \"remark\": \"remark\",\n                        \"brokenImageUrls\": []\n                    }\n                },\n                {\n                    \"id\": \"a7298477-10b1-470a-8a0a-07b808396f86\",\n                    \"checkSheetId\": \"3a1d6351-ea9e-40dc-99b4-b81b5c7c7623\",\n                    \"checkSheetIdParrent\": \"cb971116-083c-4509-a078-d86851315bf5\",\n                    \"itemSequence\": 8,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพ Breaker\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"acc46ea0-0832-49ba-9da8-40add06d9e83\",\n                    \"checkSheetId\": \"8baa7b32-1880-428e-b4be-2e7c75999110\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 1,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็ค FINTER และทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"70f0c498-7d67-475e-ba2a-a9d84f8e0628\",\n                    \"checkSheetId\": \"4ff82130-d393-4c75-b663-02a43af225c5\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 2,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็ค MOTOR และ BLOWER พร้อมทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"64720130-6ec0-458a-baf3-4004d1d7b1dc\",\n                    \"checkSheetId\": \"da5560d9-72b8-4ade-8277-bbe5014e6e9d\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 3,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพและความตึงของสายพาน\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"8e3455bd-fa1d-4609-9f65-44ed2fe915a8\",\n                    \"checkSheetId\": \"d7d607da-5eff-4683-abb8-02da1546eaa5\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 4,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คสภาพโครงครอบและแท่นเครื่องพร้อมทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"9059b36b-4619-4cfc-adbe-d14f4db735b4\",\n                    \"checkSheetId\": \"f5ad2824-ddaa-450a-b9ce-e71324216038\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 5,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คถาดรองน้ำทิ้งและทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"df2f7db8-c8e9-4dae-891d-59a5ad97f5ad\",\n                    \"checkSheetId\": \"17326f91-62a4-4436-ad34-bc531d676eed\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 6,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็คท่อน้ำทิ้งและทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                },\n                {\n                    \"id\": \"351d39f4-96a3-452e-b351-017ed30e0813\",\n                    \"checkSheetId\": \"64838865-07cc-4de9-a148-a7faafac293c\",\n                    \"checkSheetIdParrent\": \"d0451a12-0e9c-418e-a14c-61f80002a6f9\",\n                    \"itemSequence\": 7,\n                    \"checkSheetTypeCode\": 2,\n                    \"checkSheetName\": \"ตรวจเช็ค FIN COIL และทำความสะอาด\",\n                    \"checkResultCode\": 1,\n                    \"lists\": [],\n                    \"workOrder\": null\n                }\n            ]\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/task/{{taskId}}/sync?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"task",
+								"{{taskId}}",
+								"sync"
+							],
+							"query": [
+								{
+									"key": "language",
+									"value": "th"
+								},
+								{
+									"key": "projectCode",
+									"value": "SPY"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "003.4 complete tasks",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ProjectCode\":\"QCS\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseUrl}}/api/v1/engineeringmaintenacesupport/task/{{taskId}}/complete?language=th&projectCode=SPY",
+							"host": [
+								"{{BaseUrl}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"engineeringmaintenacesupport",
+								"task",
+								"{{taskId}}",
+								"complete"
 							],
 							"query": [
 								{
@@ -22668,6 +22790,34 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "activity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"projectCode\": \"QCS\",\n    \"language\": \"th\",\n    \"activityFunction\": 1,\n    \"systemChanel\": 3,\n    \"activityType\": 1,\n    \"activityDescription\": \"สรุปผลการตรวจสอบตามช่วงเวลา RPT019\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/api/v1/activity",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"activity"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"auth": {
@@ -22753,6 +22903,13 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "taskId",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
